@@ -9,6 +9,7 @@ from wtforms.validators import InputRequired
 from PIL import Image
 from torchvision import transforms
 import io
+from huggingface_hub import hf_hub_download
 
 from utils.models import VGGEncoder, Decoder
 from utils.utils import adaptive_instance_normalization, calc_mean_std
@@ -39,24 +40,24 @@ class UploadForm(FlaskForm):
     submit = SubmitField('Transfer Style')
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+VGG_PATH = hf_hub_download(
+    repo_id="harshitpundir/neuralart-models",
+    filename="vgg_normalised.pth"
+)
+
+DECODER_PATH = hf_hub_download(
+    repo_id="harshitpundir/neuralart-models",
+    filename="decoder_final.pth"
+)
 
 # CHANGED
-encoder = VGGEncoder(
-    os.path.join(BASE_DIR, "vgg_normalised.pth")
-).to(device)
+encoder = VGGEncoder(VGG_PATH).to(device)
 
 decoder = Decoder().to(device)
 
 # CHANGED
-decoder_path = os.path.join(
-    BASE_DIR,
-    "experiment",
-    "final_exp",
-    "decoder_final.pth"
-)
-
 decoder.load_state_dict(
-    torch.load(decoder_path, map_location=device)
+    torch.load(DECODER_PATH, map_location=device)
 )
 
 encoder.eval()
@@ -168,9 +169,11 @@ def send_example(filename):
     return send_from_directory('examples', filename)
 
 
-if __name__ == '__main__':
-    from werkzeug.serving import run_simple
-    run_simple('localhost', 5000, app, use_reloader=True, use_debugger=True)
+if __name__ == "__main__":
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000))
+    )
 
 
 
