@@ -3,4 +3,3 @@ torchvision
 numpy
 Pillow
 huggingface_hub
-gradio
