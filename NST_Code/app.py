@@ -11,8 +11,8 @@ from torchvision import transforms
 import io
 from huggingface_hub import hf_hub_download
 
-from utils.models import VGGEncoder, Decoder
-from utils.utils import adaptive_instance_normalization, calc_mean_std
+from NST_Code.utils.models import VGGEncoder, Decoder
+from NST_Code.utils.utils import adaptive_instance_normalization
 
 app = Flask(__name__)
 
