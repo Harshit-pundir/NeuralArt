@@ -128,7 +128,12 @@ in your browser.
 
 Input Content Image + Style Image → NeuralArt → Stylized Output
 
-(Add screenshots here)
+<img width="1919" height="902" alt="NeuralArt_home" src="https://github.com/user-attachments/assets/32f29360-b934-404b-97b2-d5c1a4d1ee25" />
+<img width="1919" height="913" alt="NeuralArt_input" src="https://github.com/user-attachments/assets/a34b505d-7989-4406-9c71-c501dff6c0a2" />
+<img width="1919" height="912" alt="NeuralArt_result" src="https://github.com/user-attachments/assets/11068b10-30c9-4e4c-acc8-90227cdafc07" />
+<img width="1905" height="908" alt="NeuralArt_example" src="https://github.com/user-attachments/assets/2b0fa920-bb57-40ca-8571-f0e268e0cb7b" />
+
+
 
 ---
 
