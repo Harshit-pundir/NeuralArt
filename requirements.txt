@@ -1,6 +1,6 @@
-gradio==5.34.0
-torch==2.2.2
-torchvision==0.17.2
-numpy>=1.24,<2.0
+torch
+torchvision
+numpy
 Pillow
 huggingface_hub
+gradio
