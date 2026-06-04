@@ -59,23 +59,16 @@ Built completely using **PyTorch**, deployed on **Hugging Face Spaces**, and wra
 
 ### Home Screen
 
-> Add screenshot here
-
 
 <img width="1919" height="900" alt="NeuralArt_home" src="https://github.com/user-attachments/assets/0469a732-b5ce-4d71-801f-ce0cbb1542b3" />
 
 ### Input 
-
-> Add screenshot here
-
 
 <img width="1919" height="909" alt="NeuralArt_input" src="https://github.com/user-attachments/assets/396aff96-09fe-41fa-a494-f3b33159cbd8" />
 
 
 
 ### Style Transfer Result
-
-> Add screenshot here
 
 
 <img width="1913" height="768" alt="NeuralArt_result" src="https://github.com/user-attachments/assets/b3b553f5-8a7e-4f86-b13e-f37c48d8588b" />
