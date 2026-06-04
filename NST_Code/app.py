@@ -62,99 +62,171 @@ def style_transfer(content_img, style_img, alpha):
 
     return tensor_to_pil(output)
 
-custom_css = """
-.gradio-container {
-    max-width: 1200px !important;
-    margin: auto;
+css = """
+.gradio-container{
+    background: linear-gradient(135deg,#020617,#0f172a,#111827);
 }
 
-#title {
-    text-align: center;
-    margin-bottom: 20px;
+.hero{
+    text-align:center;
+    padding:50px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.1);
+    margin-bottom:25px;
 }
 
-.generate-btn {
-    height: 55px;
-    font-size: 18px !important;
-    font-weight: bold !important;
+.hero h1{
+    font-size:4rem;
+    font-weight:900;
+    margin-bottom:10px;
+    background:linear-gradient(
+        90deg,
+        #38bdf8,
+        #8b5cf6,
+        #ec4899
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
-footer {
-    display: none !important;
+.hero p{
+    font-size:1.1rem;
+}
+
+.feature-card{
+    padding:20px;
+    border-radius:20px;
+    text-align:center;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 30px rgba(168,85,247,0.5);
+}
+
+.stats{
+    text-align:center;
+    padding:15px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.04);
+}
+
+.generate-btn{
+    height:70px !important;
+    font-size:22px !important;
+    font-weight:bold !important;
+}
+
+.footer{
+    text-align:center;
+    padding-top:30px;
 }
 """
 
 with gr.Blocks(
     theme=gr.themes.Soft(
         primary_hue="blue",
-        secondary_hue="violet"
+        secondary_hue="purple"
     ),
-    css=custom_css,
+    css=css,
     title="NeuralArt"
 ) as demo:
 
     gr.HTML("""
-    <div id="title">
+        <div class="hero">
         <h1>🎨 NeuralArt</h1>
-        <h3>AI Powered Neural Style Transfer</h3>
-        <p>
-            Transform ordinary photos into artistic masterpieces using
-            <b>AdaIN</b> and <b>VGG19</b>.
-        </p>
-        <p><i>Developed by Harshit Pundir</i></p>
-    </div>
-    """)
+        <h2>Turn Photos Into Masterpieces Using AI</h2>
+        <p>Powered by AdaIN • PyTorch • Hugging Face</p>
+        </div>
+        """)
 
     with gr.Row():
+            gr.HTML('<div class="feature-card">⚡ Fast Inference</div>')
+            gr.HTML('<div class="feature-card">🎭 Artistic Styles</div>')
+            gr.HTML('<div class="feature-card">🧠 Deep Learning</div>')
+            gr.HTML('<div class="feature-card">☁️ Cloud Hosted</div>')
 
-        content = gr.Image(
-            type="pil",
-            label="📸 Content Image",
-            height=350
-        )
+    with gr.Row():
+            gr.HTML('<div class="stats"><h2>🚀 AI Powered</h2></div>')
+            gr.HTML('<div class="stats"><h2>🎨 Unlimited Creativity</h2></div>')
+            gr.HTML('<div class="stats"><h2>⚡ Real Time</h2></div>')
 
-        style = gr.Image(
-            type="pil",
-            label="🎭 Style Image",
-            height=350
-        )
+    gr.Markdown("## 🖼️ Upload Your Images")
 
-    alpha = gr.Slider(
-        minimum=0,
-        maximum=1,
-        value=1.0,
-        step=0.1,
-        label="🎨 Style Strength"
-    )
+    with gr.Row():
+            content = gr.Image(
+                type="pil",
+                label="📸 Content Image",
+                height=450
+            )
 
-    generate_btn = gr.Button(
-        "✨ Generate Artwork",
-        elem_classes=["generate-btn"]
-    )
-
-    output = gr.Image(
-        type="pil",
-        label="🖼️ Generated Artwork",
-        height=500
-    )
-
-    generate_btn.click(
-        fn=style_transfer,
-        inputs=[content, style, alpha],
-        outputs=output
-    )
+            style = gr.Image(
+                type="pil",
+                label="🎨 Style Image",
+                height=450
+            )
 
     gr.Markdown("""
-    ---
-    ### 🚀 How it Works
+        ### ⚡ Create Stunning AI Artwork
 
-    1. Upload a content image.
-    2. Upload a style image.
-    3. Adjust style strength.
-    4. Click **Generate Artwork**.
-    5. Download your AI-generated result.
+        Upload a content image and a style image,
+        then let NeuralArt transform it into a masterpiece.
+        """)
 
-    **Tech Stack:** PyTorch • AdaIN • VGG19 • Gradio • Hugging Face Spaces
-    """)
+    alpha = gr.Slider(
+            minimum=0,
+            maximum=1,
+            value=1,
+            step=0.1,
+            label="✨ Style Strength"
+        )
 
-demo.launch()
+    btn = gr.Button(
+            "🚀 Generate Masterpiece",
+            variant="primary",
+            elem_classes="generate-btn"
+        )
+
+    output = gr.Image(
+            type="pil",
+            label="🌟 AI Generated Artwork",
+            height=650,
+            show_download_button=True
+        )
+
+    btn.click(
+            fn=style_transfer,
+            inputs=[content, style, alpha],
+            outputs=output
+        )
+
+    gr.Markdown("## 🎯 Try Sample Styles")
+
+    gr.Examples(
+            examples=[
+                [
+                    "examples/brad_pitt.jpg",
+                    "examples/picasso_seated_nude_hr.jpg",
+                    1.0
+                ]
+            ],
+            inputs=[content, style, alpha]
+        )
+
+    gr.HTML("""
+        <div class="footer">
+        <hr>
+        <h2>🚀 Built by Harshit Pundir</h2>
+        <p>BTech CSE • AI/ML Engineer</p>
+        <p>PyTorch • Hugging Face • AdaIN</p>
+        <p>Made with ❤️ and Deep Learning</p>
+        </div>
+        """)
+
+demo.launch(show_error=True)
