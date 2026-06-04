@@ -196,7 +196,7 @@ with gr.Blocks(
     output = gr.Image(
             type="pil",
             label="🌟 AI Generated Artwork",
-            height=650,
+                height=500,
         
         )
 
@@ -205,20 +205,13 @@ with gr.Blocks(
             inputs=[content, style, alpha],
             outputs=output
         )
-
-    gr.Markdown("## 🎯 Try Sample Styles")
-
-    gr.Examples(
-            examples=[
-                [
-                    "examples/brad_pitt.jpg",
-                    "examples/picasso_seated_nude_hr.jpg",
-                    1.0
-                ]
-            ],
-            inputs=[content, style, alpha]
-        )
-
+    gr.Markdown("""
+        ### 🚀 Tips
+        - Use high-resolution content images
+        - Try paintings as style images
+        - Increase style strength for stronger artistic effects
+        - Download and share your generated artwork
+        """)
     gr.HTML("""
         <div class="footer">
         <hr>
