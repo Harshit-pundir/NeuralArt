@@ -1,62 +1,97 @@
-# 🎨 NeuralArt
+# 🎨 NeuralArt AI
 
-NeuralArt is a Flask and PyTorch powered Neural Style Transfer web application that uses **Adaptive Instance Normalization (AdaIN)** to transform content images into artistic masterpieces. Users can upload content and style images, adjust style intensity, and generate high-quality stylized artwork through an intuitive web interface.
+<div align="center">
+
+### Transform Ordinary Photos into Stunning Artwork using Neural Style Transfer
+
+🚀 Powered by AdaIN • PyTorch • Gradio • Hugging Face
+
+[Live Demo](https://harshitpundir-neuralart.hf.space)
+
+</div>
 
 ---
 
-## 🚀 Features
+## ✨ Overview
 
-* Upload content and style images
-* Adjustable style strength control
-* Real-time neural style transfer
-* Download generated stylized images
-* Modern and responsive UI
-* Powered by AdaIN architecture
-* Fast inference using PyTorch
+NeuralArt AI is a Deep Learning based Neural Style Transfer application that transforms ordinary photographs into artistic masterpieces.
+
+The project uses **Adaptive Instance Normalization (AdaIN)** to blend the content of one image with the artistic style of another image in real time.
+
+Built with:
+
+* PyTorch
+* Gradio
+* Hugging Face Spaces
+* AdaIN Architecture
+* VGG19 Encoder
+
+---
+
+## 🚀 Live Demo
+
+🔗 https://harshitpundir-neuralart.hf.space
+
+---
+
+## 🎯 Features
+
+✅ Upload Content Image
+
+✅ Upload Style Image
+
+✅ Adjustable Style Strength
+
+✅ Real-Time Style Transfer
+
+✅ Modern AI Dashboard UI
+
+✅ Download Generated Artwork
+
+✅ Hugging Face Deployment
+
+✅ PyTorch Inference Pipeline
 
 ---
 
 ## 🛠️ Tech Stack
-
-### Backend
-
-* Python
-* Flask
-* PyTorch
-* TorchVision
-
-### Frontend
-
-* HTML5
-* CSS3
-* JavaScript
 
 ### Deep Learning
 
 * Adaptive Instance Normalization (AdaIN)
 * VGG Encoder
 * Custom Decoder Network
+* PyTorch
+
+### Frontend
+
+* Gradio
+* HTML
+* CSS
+
+### Deployment
+
+* Hugging Face Spaces
+* Hugging Face Hub
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-ai-nst-project/
+NeuralArt/
 │
-├── NST_Code/
-│   ├── app.py
-│   ├── utils/
-│   ├── templates/
-│   ├── static/
-│   ├── content_data/
-│   ├── style_data/
-│   └── experiment/
-│
-├── Demo_IO_Images/
+├── app.py
+├── models.py
+├── utils.py
 ├── requirements.txt
-├── README.md
-└── Procfile.txt
+├── runtime.txt
+│
+├── examples/
+│   ├── brad_pitt.jpg
+│   └── picasso_seated_nude_hr.jpg
+│
+└── README.md
 ```
 
 ---
@@ -67,96 +102,114 @@ ai-nst-project/
 
 ```bash
 git clone https://github.com/Harshit-pundir/NeuralArt.git
+
 cd NeuralArt
 ```
 
-### Create Virtual Environment
+### Create Environment
 
 ```bash
 python -m venv venv
 ```
 
-### Activate Environment
+### Activate
 
-**Windows**
+Windows
 
 ```bash
 venv\Scripts\activate
 ```
 
-**Linux / Mac**
+Linux / Mac
 
 ```bash
 source venv/bin/activate
 ```
 
-### Install Dependencies
+### Install Requirements
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## ▶️ Run Application
+### Run
 
 ```bash
-python NST_Code/app.py
+python app.py
 ```
-
-Open:
-
-```text
-http://localhost:5000
-```
-
-in your browser.
 
 ---
 
 ## 🖼️ How It Works
 
-1. Upload a content image.
-2. Upload a style image.
-3. Adjust style strength using the slider.
-4. Click **Transfer Style**.
-5. Download the generated stylized image.
+1. Upload a Content Image
+2. Upload a Style Image
+3. Adjust Style Strength
+4. Click Generate Artwork
+5. Download AI Generated Result
 
 ---
 
-## 📸 Sample Result
+## 🧠 Model Architecture
 
-Input Content Image + Style Image → NeuralArt → Stylized Output
+```text
+Content Image
+       │
+       ▼
+   VGG Encoder
+       │
+       ▼
+AdaIN Layer
+       ▲
+       │
+  Style Features
+       │
+       ▼
+    Decoder
+       │
+       ▼
+ Stylized Output
+```
 
-<img width="1919" height="902" alt="NeuralArt_home" src="https://github.com/user-attachments/assets/32f29360-b934-404b-97b2-d5c1a4d1ee25" />
-<img width="1919" height="913" alt="NeuralArt_input" src="https://github.com/user-attachments/assets/a34b505d-7989-4406-9c71-c501dff6c0a2" />
-<img width="1919" height="912" alt="NeuralArt_result" src="https://github.com/user-attachments/assets/11068b10-30c9-4e4c-acc8-90227cdafc07" />
-<img width="1905" height="908" alt="NeuralArt_example" src="https://github.com/user-attachments/assets/2b0fa920-bb57-40ca-8571-f0e268e0cb7b" />
+---
 
+## 📸 Results
 
+Add screenshots here:
+
+* Home Page
+* Input Images
+* Generated Artwork
+* Example Outputs
 
 ---
 
 ## 🔮 Future Improvements
 
-* Multiple artistic style presets
-* GPU acceleration support
-* User authentication
-* Image gallery and history
-* Cloud deployment
+* Multiple Style Presets
+* GPU Acceleration
+* Batch Processing
+* Mobile Friendly UI
+* Image History
+* User Authentication
 
 ---
 
 ## 👨‍💻 Author
 
-**Harshit Pundir**
+### Harshit Pundir
 
-B.Tech CSE Student | AI/ML Enthusiast
+B.Tech CSE Student
 
-GitHub: https://github.com/Harshit-pundir
+AI / ML Enthusiast
+
+* GitHub: https://github.com/Harshit-pundir
+* Hugging Face: https://huggingface.co/harshitpundir
 
 ---
 
 ## ⭐ Support
 
-If you found this project useful, consider giving it a star on GitHub.
+If you like this project, consider giving it a ⭐ on GitHub.
+
+It motivates further development and improvements.
