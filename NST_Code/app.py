@@ -62,16 +62,99 @@ def style_transfer(content_img, style_img, alpha):
 
     return tensor_to_pil(output)
 
-demo = gr.Interface(
-    fn=style_transfer,
-    inputs=[
-        gr.Image(type="pil", label="Content Image"),
-        gr.Image(type="pil", label="Style Image"),
-        gr.Slider(0, 1, value=1.0, step=0.1, label="Alpha")
-    ],
-    outputs=gr.Image(type="pil", label="Stylized Output"),
-    title="🎨 NeuralArt",
-    description="Neural Style Transfer using AdaIN"
-)
+custom_css = """
+.gradio-container {
+    max-width: 1200px !important;
+    margin: auto;
+}
+
+#title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.generate-btn {
+    height: 55px;
+    font-size: 18px !important;
+    font-weight: bold !important;
+}
+
+footer {
+    display: none !important;
+}
+"""
+
+with gr.Blocks(
+    theme=gr.themes.Soft(
+        primary_hue="blue",
+        secondary_hue="violet"
+    ),
+    css=custom_css,
+    title="NeuralArt"
+) as demo:
+
+    gr.HTML("""
+    <div id="title">
+        <h1>🎨 NeuralArt</h1>
+        <h3>AI Powered Neural Style Transfer</h3>
+        <p>
+            Transform ordinary photos into artistic masterpieces using
+            <b>AdaIN</b> and <b>VGG19</b>.
+        </p>
+        <p><i>Developed by Harshit Pundir</i></p>
+    </div>
+    """)
+
+    with gr.Row():
+
+        content = gr.Image(
+            type="pil",
+            label="📸 Content Image",
+            height=350
+        )
+
+        style = gr.Image(
+            type="pil",
+            label="🎭 Style Image",
+            height=350
+        )
+
+    alpha = gr.Slider(
+        minimum=0,
+        maximum=1,
+        value=1.0,
+        step=0.1,
+        label="🎨 Style Strength"
+    )
+
+    generate_btn = gr.Button(
+        "✨ Generate Artwork",
+        elem_classes=["generate-btn"]
+    )
+
+    output = gr.Image(
+        type="pil",
+        label="🖼️ Generated Artwork",
+        height=500
+    )
+
+    generate_btn.click(
+        fn=style_transfer,
+        inputs=[content, style, alpha],
+        outputs=output
+    )
+
+    gr.Markdown("""
+    ---
+    ### 🚀 How it Works
+
+    1. Upload a content image.
+    2. Upload a style image.
+    3. Adjust style strength.
+    4. Click **Generate Artwork**.
+    5. Download your AI-generated result.
+
+    **Tech Stack:** PyTorch • AdaIN • VGG19 • Gradio • Hugging Face Spaces
+    """)
 
 demo.launch()
