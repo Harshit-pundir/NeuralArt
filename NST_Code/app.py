@@ -197,7 +197,7 @@ with gr.Blocks(
             type="pil",
             label="🌟 AI Generated Artwork",
             height=650,
-            show_download_button=True
+        
         )
 
     btn.click(
