@@ -1,12 +1,24 @@
 # 🎨 NeuralArt AI
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11-blue">
+  <img src="https://img.shields.io/badge/PyTorch-2.7-red">
+  <img src="https://img.shields.io/badge/AdaIN-Neural%20Style%20Transfer-purple">
+  <img src="https://img.shields.io/badge/Gradio-6.16-orange">
+  <img src="https://img.shields.io/badge/HuggingFace-Live-yellow">
+</p>
+
 <div align="center">
 
 ### Transform Ordinary Photos into Stunning Artwork using Neural Style Transfer
 
 🚀 Powered by AdaIN • PyTorch • Gradio • Hugging Face
 
-[Live Demo](https://harshitpundir-neuralart.hf.space)
+<p align="center">
+<a href="https://harshitpundir-neuralart.hf.space">
+  <img src="https://img.shields.io/badge/🚀%20Launch%20Demo-Live-success?style=for-the-badge">
+</a>
+</p>
 
 </div>
 
@@ -175,12 +187,15 @@ AdaIN Layer
 
 ## 📸 Results
 
-Add screenshots here:
+## 📸 Results
 
-* Home Page
-* Input Images
-* Generated Artwork
-* Example Outputs
+### Application UI
+
+![Home](assets/home.png)
+
+### Style Transfer Example
+
+![Result](assets/result.png)
 
 ---
 
